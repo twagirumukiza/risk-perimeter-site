@@ -769,6 +769,110 @@ a:hover { color: var(--accent-hover); }
   color: var(--text);
 }
 
+/* ===== Share section ===== */
+.share-section {
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+  text-align: center;
+  padding: 4rem 0;
+}
+
+.share-title {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.share-desc {
+  color: var(--text-muted);
+  margin-bottom: 1.75rem;
+  font-size: 0.95rem;
+}
+
+.share-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.65rem;
+  margin-bottom: 2.5rem;
+}
+
+.share-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  transition: all 0.2s;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: inherit;
+  padding: 0;
+}
+.share-btn:hover {
+  color: white;
+  border-color: transparent;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+.share-btn[data-share="linkedin"]:hover { background: #0A66C2; }
+.share-btn[data-share="x"]:hover { background: #000; }
+.share-btn[data-share="facebook"]:hover { background: #1877F2; }
+.share-btn[data-share="whatsapp"]:hover { background: #25D366; }
+.share-btn[data-share="telegram"]:hover { background: #26A5E4; }
+.share-btn[data-share="reddit"]:hover { background: #FF4500; }
+.share-btn[data-share="pinterest"]:hover { background: #E60023; }
+.share-btn[data-share="teams"]:hover { background: #6264A7; }
+.share-btn-copy:hover { background: var(--accent); color: white; }
+
+.import-box {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  text-align: left;
+}
+.import-box h3 {
+  font-size: 1rem;
+  font-weight: 650;
+  margin-bottom: 0.4rem;
+}
+.import-box p {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+.import-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+.btn-secondary {
+  background: var(--bg-alt);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 0.55rem 1rem;
+  font-size: 0.85rem;
+}
+.btn-secondary:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.copy-feedback {
+  margin-top: 0.85rem;
+  font-size: 0.85rem;
+  color: var(--success);
+  font-weight: 500;
+}
+
 /* ===== Footer ===== */
 .site-footer {
   padding: 3rem 0;
