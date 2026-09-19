@@ -132,4 +132,98 @@
   }
 
   window.addEventListener("scroll", updateActiveNav, { passive: true });
+
+  // ===== Share =====
+  const pageUrl = encodeURIComponent(window.location.href);
+  const pageTitle = encodeURIComponent(document.title);
+  const shareText = encodeURIComponent(
+    document.documentElement.lang === "en"
+      ? "The risk perimeter is no longer the IS — a GRC reflection by Innocent TWAGIRUMUKIZA"
+      : "Le périmètre de risque n’est plus le SI — une réflexion GRC d’Innocent TWAGIRUMUKIZA"
+  );
+
+  const shareUrls = {
+    linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${pageUrl}`,
+    x: `https://twitter.com/intent/tweet?url=${pageUrl}&text=${shareText}`,
+    facebook: `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`,
+    whatsapp: `https://wa.me/?text=${shareText}%20${pageUrl}`,
+    telegram: `https://t.me/share/url?url=${pageUrl}&text=${shareText}`,
+    reddit: `https://reddit.com/submit?url=${pageUrl}&title=${pageTitle}`,
+    pinterest: `https://pinterest.com/pin/create/button/?url=${pageUrl}&description=${shareText}`,
+    teams: `https://teams.microsoft.com/share?href=${pageUrl}&msgText=${shareText}`
+  };
+
+  document.querySelectorAll("[data-share]").forEach((btn) => {
+    const network = btn.getAttribute("data-share");
+    if (shareUrls[network]) {
+      btn.href = shareUrls[network];
+    }
+  });
+
+  function showFeedback(msg) {
+    const el = document.getElementById("copyFeedback");
+    if (!el) return;
+    el.textContent = msg;
+    el.hidden = false;
+    setTimeout(() => { el.hidden = true; }, 2500);
+  }
+
+  function getLangDict() {
+    const lang = document.documentElement.lang || "fr";
+    return (typeof translations !== "undefined" && translations[lang]) ? translations[lang] : {};
+  }
+
+  // Copy link
+  const copyLinkBtn = document.getElementById("copyLinkBtn");
+  if (copyLinkBtn) {
+    copyLinkBtn.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        const dict = getLangDict();
+        showFeedback(dict["share.linkCopied"] || "Lien copié !");
+      } catch (e) {
+        prompt("Copiez ce lien :", window.location.href);
+      }
+    });
+  }
+
+  // Copy embed code
+  const copyEmbedBtn = document.getElementById("copyEmbedBtn");
+  if (copyEmbedBtn) {
+    copyEmbedBtn.addEventListener("click", async () => {
+      const title = document.querySelector("h1")?.textContent || document.title;
+      const embed = `<!-- Réflexion GRC – Innocent TWAGIRUMUKIZA -->
+<blockquote cite="${window.location.href}">
+  <p><strong>${title}</strong></p>
+  <p>Le périmètre de risque n’est plus le SI. C’est l’écosystème.</p>
+  <footer>
+    <cite><a href="${window.location.href}">Lire la réflexion complète</a> — Innocent TWAGIRUMUKIZA, Cybersecurity &amp; Risk Management Consultant</cite>
+  </footer>
+</blockquote>`;
+      try {
+        await navigator.clipboard.writeText(embed);
+        const dict = getLangDict();
+        showFeedback(dict["share.copied"] || "Copié !");
+      } catch (e) {
+        prompt("Code d’intégration :", embed);
+      }
+    });
+  }
+
+  // Copy article text (main content)
+  const copyTextBtn = document.getElementById("copyTextBtn");
+  if (copyTextBtn) {
+    copyTextBtn.addEventListener("click", async () => {
+      const main = document.getElementById("main");
+      const text = main ? main.innerText.replace(/\n{3,}/g, "\n\n").trim() : "";
+      const full = text + "\n\n— Innocent TWAGIRUMUKIZA\n" + window.location.href;
+      try {
+        await navigator.clipboard.writeText(full);
+        const dict = getLangDict();
+        showFeedback(dict["share.copied"] || "Copié !");
+      } catch (e) {
+        prompt("Texte de l’article :", full);
+      }
+    });
+  }
 })();

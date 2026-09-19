@@ -106,6 +106,15 @@ const translations = {
     "conclusion.p2": "Il comprend aussi, dans une certaine mesure, tout ce dont elle dépend pour fonctionner.",
     "conclusion.final": "Le périmètre de risque n’est plus le SI.\nC’est l’écosystème.",
 
+    "share.title": "Partager cette réflexion",
+    "share.desc": "Diffusez l’article ou importez-le sur votre site / intranet.",
+    "share.importTitle": "Importer sur votre site",
+    "share.importDesc": "Copiez le code ci-dessous pour intégrer un extrait ou un lien vers cette réflexion.",
+    "share.copyEmbed": "Copier le code d’intégration",
+    "share.copyText": "Copier le texte de l’article",
+    "share.copied": "Copié dans le presse-papiers !",
+    "share.linkCopied": "Lien copié !",
+
     "footer.by": "Une réflexion d’",
     "footer.role": "Cybersecurity & Risk Management Consultant",
     "footer.purpose": "Contenu de référence destiné aux RSSI, Risk Managers, décideurs et professionnels de la GRC.",
@@ -218,6 +227,15 @@ const translations = {
     "conclusion.p1": "The organisation’s information system is no longer only made up of what it owns.",
     "conclusion.p2": "It also includes, to a certain extent, everything it depends on to function.",
     "conclusion.final": "The risk perimeter is no longer the IS.\nIt is the ecosystem.",
+
+    "share.title": "Share this reflection",
+    "share.desc": "Share the article or import it on your website / intranet.",
+    "share.importTitle": "Import to your site",
+    "share.importDesc": "Copy the code below to embed an excerpt or a link to this reflection.",
+    "share.copyEmbed": "Copy embed code",
+    "share.copyText": "Copy article text",
+    "share.copied": "Copied to clipboard!",
+    "share.linkCopied": "Link copied!",
 
     "footer.by": "A reflection by",
     "footer.role": "Cybersecurity & Risk Management Consultant",
